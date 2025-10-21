@@ -74,3 +74,16 @@ if __name__ == "__main__":
     tokens = ParserLL1.tokenizar(expresion)
     parser = ParserLL1(tokens)
     parser.analizar()
+
+import time
+
+# Comparacion de tiempo con diferentes longitudes
+for n in [1, 4, 8, 12]:
+    expr = "id " + " + id" * (n - 1)
+    tokens = ParserLL1.tokenizar(expr)
+    inicio = time.perf_counter()
+    parser = ParserLL1(tokens)
+    parser.analizar()
+    fin = time.perf_counter()
+    print(f"Expresión con {n} operandos: {fin - inicio:.6f} segundos")
+
